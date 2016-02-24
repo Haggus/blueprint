@@ -6,6 +6,8 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+var client = require('electron-connect').client;
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -19,6 +21,8 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  client.create(mainWindow);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
